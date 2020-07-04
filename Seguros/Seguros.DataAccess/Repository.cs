@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Seguros.DataAccess
 {
-    public class Repository<Entity> : IRepository<Entity> where Entity : class
+    public class Repository : IRepository
     {
         public SqlConnection Context { get; set; }
         public Repository()
@@ -45,7 +45,7 @@ namespace Seguros.DataAccess
             }
         }
 
-        public List<Entity> GetEntities(string StoreProcedure, DynamicParameters prm)
+        public List<Entity> GetEntities<Entity>(string StoreProcedure, DynamicParameters prm)
         {
             using (IDbConnection db = Context)
             {

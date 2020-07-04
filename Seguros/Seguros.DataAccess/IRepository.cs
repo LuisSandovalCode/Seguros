@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace Seguros.DataAccess
 {
-    public interface IRepository<Entity> where Entity : class
+    public interface IRepository
     {
         SqlConnection Context { get; set; }
 
         bool InsertEntity(string StoreProcedure,DynamicParameters prm);
         bool DeleteEntity(string StoreProcedure, DynamicParameters prm);
         bool UpdateEntity(string StoreProcedure, DynamicParameters prm);
-        List<Entity> GetEntities(string StoreProcedure, DynamicParameters prm);
+        List<Entity> GetEntities<Entity>(string StoreProcedure, DynamicParameters prm);
 
     }
 }
