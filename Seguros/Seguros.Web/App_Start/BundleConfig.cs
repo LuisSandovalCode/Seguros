@@ -9,10 +9,14 @@ namespace Seguros.Web
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/jquery-3.4.1.js",
+                        "~/js/plugin/jquery.dataTables.min.js",
+                        "~/js/HttpService/Api.js",
+                        "~/js/Utils/JsonUtils.js",
+                        "~/js/Utils/RoutesUtils.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                        "~/Scripts/jquery.validate*"));
+                        "~/Scripts/jquery.validate.js"));
 
             // Utilice la versión de desarrollo de Modernizr para desarrollar y obtener información. De este modo, estará
             // para la producción, use la herramienta de compilación disponible en https://modernizr.com para seleccionar solo las pruebas que necesite.
@@ -24,7 +28,27 @@ namespace Seguros.Web
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/css/jquery.dataTables.min.css"));
+
+            bundles.Add(new StyleBundle("~/Content/Login").Include(
+                      "~/css/login.css"));
+
+            bundles.Add(new ScriptBundle("~/js/User/Login").Include(
+                "~/js/User/Login.js"
+            ));
+
+            bundles.Add(new ScriptBundle("~/js/Home/Insurance").Include(
+                "~/js/Home/Insurance.js"
+            ));
+
+            bundles.Add(new ScriptBundle("~/js/Home/Customer").Include(
+                "~/js/Home/Customer.js"
+            ));
+
+            bundles.Add(new ScriptBundle("~/js/Home/CreateInsurance").Include(
+                "~/js/Home/CreateInsurance.js"
+            ));
         }
     }
 }

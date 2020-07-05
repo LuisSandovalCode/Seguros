@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "Insurance";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Scripts.Render("~/js/Home/CreateInsurance")
+<div class="row">
+    <h1 class="h1">Create Insurance</h1>
+</div>
+
+<div class="row" style="margin-top: 50px;">
+    <div class="col-md-4">
+        <div class="form-group">
+            <label>Name Insurance</label>
+            <input type="text" class="form-control" id="TxtNameInsurance" />
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label>Description Insurance</label>
+            <input type="text" class="form-control" id="TxtDescriptionInsurance" />
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label>Policy Start</label>
+            <input type="date" class="form-control" id="TxtDescriptionInsurance" />
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group">
+            <label>Terms</label>
+            <input type="text" class="form-control" id="TxtTermsInsurance" />
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label>Price</label>
+            <input type="number" class="form-control" id="TxtPriceInsurance" />
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group">
+            <label>Risk Type</label>
+            <select class="form-control" id="SelectRisk"></select>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label>Coverage Type</label>
+            <select class="form-control" id="SelectCoverage"></select>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <button class="btn btn-success btn-block" id="BtnSave">Save Insurance</button>
+</div>
+
+

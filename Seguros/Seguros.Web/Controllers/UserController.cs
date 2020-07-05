@@ -6,20 +6,10 @@ using System.Web.Mvc;
 
 namespace Seguros.Web.Controllers
 {
-    public class HomeController : Controller
+    public class UserController : Controller
     {
+        // GET: User
         public ActionResult Index()
-        {
-            return View();
-        }
-
-
-        public ActionResult Customer()
-        {
-            return View();
-        }
-
-        public ActionResult CreateInsurance()
         {
             return View();
         }

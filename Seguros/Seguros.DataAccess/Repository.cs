@@ -15,7 +15,7 @@ namespace Seguros.DataAccess
         public SqlConnection Context { get; set; }
         public Repository()
         {
-            Context = new SqlConnection(ConfigurationManager.ConnectionStrings["STR_CON"].ToString());
+            Context = new SqlConnection(ConfigurationManager.ConnectionStrings["INSURANCE_CON"].ToString());
         }
 
         public bool InsertEntity(string StoreProcedure, DynamicParameters prm)

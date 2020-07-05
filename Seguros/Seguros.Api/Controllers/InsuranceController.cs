@@ -91,5 +91,35 @@ namespace Seguros.Api.Controllers
                 return InternalServerError();
             }
         }
+
+        [Route("Risks")]
+        [HttpPost]
+        public IHttpActionResult GetRisks()
+        {
+            try
+            {
+
+                return Ok(insurancePolicy.GetRiskTypes());
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError();
+            }
+        }
+
+        [Route("Coverages")]
+        [HttpPost]
+        public IHttpActionResult GetCoverages()
+        {
+            try
+            {
+
+                return Ok(insurancePolicy.GetCoverages());
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError();
+            }
+        }
     }
 }

@@ -8,7 +8,7 @@ namespace Seguros.Entities
 {
     public class User
     {
-        public int IdUser { get; set; }
+        public int? IdUser { get; set; }
         public string Identification { get; set; }
         public string Password { get; set; }
     }

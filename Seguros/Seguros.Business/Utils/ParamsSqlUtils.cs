@@ -17,9 +17,9 @@ namespace Seguros.Business.Utils
 
             foreach (var Property in typeEntity.GetProperties())
             {
-                if (Property.GetValue(typeEntity) != null)
+                if (Property.GetValue(prms,null) != null)
                 {
-                    parameters.Add($"@{Property.Name}", Property.GetValue(typeEntity));
+                    parameters.Add($"@{Property.Name}", Property.GetValue(prms,null));
                 }
             }
             return parameters;

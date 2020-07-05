@@ -5,6 +5,7 @@ using Seguros.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -39,6 +40,31 @@ namespace Seguros.Business
             {
                 DynamicParameters parms = entity.GetParameters();
                 return repositoryInsurance.InsertEntity("SP_DeleteInsurance", parms);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        public List<RiskType> GetRiskTypes()
+        {
+            try
+            {
+                return repositoryInsurance.GetEntities<RiskType>("SP_GetRiks", null);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public List<CoverageType> GetCoverages()
+        {
+            try
+            {
+                return repositoryInsurance.GetEntities<CoverageType>("SP_GetCoverage", null);
             }
             catch (Exception ex)
             {

@@ -14,7 +14,6 @@ namespace Seguros.Entities
         public string Telephone { get; set; }
         public string Email { get; set; }
         public string Adress { get; set; }
-        public int IdRiskType { get; set; }
-        public int IdCoverage { get; set; }
+        public long IdInsurancePolicy { get; set; }
     }
 }
