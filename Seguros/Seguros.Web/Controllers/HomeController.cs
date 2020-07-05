@@ -28,5 +28,10 @@ namespace Seguros.Web.Controllers
         {
             return View();
         }
+
+        public ActionResult CustomerInsurancePolicy()
+        {
+            return View();
+        }
     }
 }

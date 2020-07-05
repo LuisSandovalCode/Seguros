@@ -16,7 +16,7 @@ $(document).ready(function () {
                         customer.Telephone,
                         customer.Email,
                         customer.Adress,
-                        "",
+                        GenerateColumsViewPolicies(customer.IdCustomer),
                         GenerateColumsAddPolicy(customer.IdCustomer, customer.Name),
                     ]
                 ]
@@ -30,6 +30,16 @@ function GenerateColumsAddPolicy(IdCustomer) {
     return "<div>"
         + "<a href='javascript:' style='margin-right: 30px;' rel='nofollow' onclick='AddPolicy(" + IdCustomer + ")'>Add Policy</a>"
         + "</div >";
+}
+
+function GenerateColumsViewPolicies(IdCustomer) {
+    return "<div>"
+        + "<a href='javascript:' style='margin-right: 30px;' rel='nofollow' onclick='ViewInsurances(" + IdCustomer + ")'>Add Policy</a>"
+        + "</div >";
+}
+
+function ViewInsurances(IdCustomer) {
+    RedirectoTo("/Home/CustomerInsurancePolicy?IdCustomer=" + IdCustomer);
 }
 
 function AddPolicy(IdCustomer) {

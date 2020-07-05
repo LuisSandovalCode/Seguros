@@ -18,5 +18,6 @@ namespace Seguros.Entities
         public string RiskName { get; set; } = null;
         public int? IdCoverage { get; set; }
         public string CoverageName { get; set; } = null;
+        public decimal? CoveragePercentage { get; set; }
     }
 }

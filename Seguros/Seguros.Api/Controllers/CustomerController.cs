@@ -109,5 +109,23 @@ namespace Seguros.Api.Controllers
             }
         }
 
+        [Route("CustomerInsurances")]
+        [HttpPost]
+        public IHttpActionResult GetInsurancesByCustomer()
+        {
+            try
+            {
+                var RequestBody = Request.Content.ReadAsStringAsync().Result;
+
+                var customer = RequestBody.DeserealizeJson<Customer>();
+
+                return Ok(BusinessCustomer.GetCustomerInsurances(customer));
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError();
+            }
+        }
+
     }
 }

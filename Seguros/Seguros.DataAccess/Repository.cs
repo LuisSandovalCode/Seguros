@@ -54,12 +54,12 @@ namespace Seguros.DataAccess
             }
         }
 
-        public Entity ExecuteQuery<Entity>(string StoreProcedure, DynamicParameters prm)
+        public IEnumerable<Entity> ExecuteQuery<Entity>(string StoreProcedure, DynamicParameters prm)
         {
             using (IDbConnection db = Context)
             {
                 db.Open();
-                return db.Query<Entity>(sql: StoreProcedure, param: prm, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                return db.Query<Entity>(sql: StoreProcedure, param: prm, commandType: CommandType.StoredProcedure);
             }
         }
     }

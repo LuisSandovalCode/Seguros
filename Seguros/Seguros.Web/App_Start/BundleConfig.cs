@@ -56,6 +56,10 @@ namespace Seguros.Web
             bundles.Add(new ScriptBundle("~/js/Home/PolicyClient").Include(
                 "~/js/Home/PolicyClient.js"
             ));
+
+            bundles.Add(new ScriptBundle("~/js/Home/CustomerInsurances").Include(
+                "~/js/Home/CustomerInsurances.js"
+            ));
         }
     }
 }

@@ -140,6 +140,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="js\Home\CreateInsurance.js" />
     <Content Include="js\Home\Customer.js" />
+    <Content Include="js\Home\CustomerInsurances.js" />
     <Content Include="js\Home\Insurance.js" />
     <Content Include="js\Home\PolicyClient.js" />
     <Content Include="js\HttpService\Api.js" />
@@ -180,6 +181,7 @@
     <Content Include="Views\Home\Customer.cshtml" />
     <Content Include="Views\Home\CreateInsurance.cshtml" />
     <Content Include="Views\Home\PolicyCustomer.cshtml" />
+    <Content Include="Views\Home\CustomerInsurancePolicy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

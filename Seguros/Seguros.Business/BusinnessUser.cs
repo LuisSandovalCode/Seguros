@@ -23,7 +23,7 @@ namespace Seguros.Business
             {
                 var prm = user.GetParameters();
 
-                return repositoryUser.ExecuteQuery<bool>("SP_AuthUser", prm);
+                return repositoryUser.ExecuteQuery<bool>("SP_AuthUser", prm).FirstOrDefault();
             }
             catch (Exception ex)
             {

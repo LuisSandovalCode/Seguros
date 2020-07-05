@@ -86,5 +86,18 @@ namespace Seguros.Business
                 throw ex;
             }
         }
+
+        public List<InsurancePolicy> GetCustomerInsurances(Customer customer)
+        {
+            try
+            {
+                var prm = customer.GetParameters();
+                return repositoryCustomer.ExecuteQuery<InsurancePolicy>("SP_GetCustomerInsurance", prm).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
