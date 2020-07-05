@@ -13,6 +13,8 @@ namespace Seguros.Business
         bool Update<Entity>(Entity entity) where Entity : class;
 
         bool Delete<Entity>(Entity entity) where Entity : class;
+        
+        bool AddPolicy<Entity>(Entity entity) where Entity : class;
 
         List<Entity> GetEntities<Entity>(Entity entity);
     }

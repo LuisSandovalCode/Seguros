@@ -98,5 +98,10 @@ namespace Seguros.Business
                 throw ex;
             }
         }
+
+        public bool AddPolicy<Entity>(Entity entity) where Entity : class
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "PolicyCustomer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Scripts.Render("~/js/Home/PolicyClient")
+@Scripts.Render("~/bundles/JqueryValidation")
+
+<div class="row">
+    <h1 class="h2">Add Policy to Customer</h1>
+</div>
+<form id="FormPolicy">
+    <div class="row" style="margin-top: 50px;">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label>Customer: </label>
+                <input type="text" class="form-control" readonly id="txtCustomerName" />
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label>Policies: </label>
+                <select class="form-control" id="SelectPolicies"></select>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label>Coverage Percentage: </label>
+                <input type="number" min="1" max="100" class="form-control" name="Coverage" id="txtCoveragePercentage" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 50px;">
+        <input id="btnAction" type="submit" class="btn btn-success center-block" value="Add Policy"/>
+    </div>
+</form>
+
+
+
+

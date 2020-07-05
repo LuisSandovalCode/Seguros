@@ -55,6 +55,24 @@ namespace Seguros.Api.Controllers
             }
         }
 
+        [Route("AddPolicy")]
+        [HttpPost]
+        public IHttpActionResult AddPolicy()
+        {
+            try
+            {
+                var RequestBody = Request.Content.ReadAsStringAsync().Result;
+
+                var customerPolicy = RequestBody.DeserealizeJson<CustomerPolicy>();
+
+                return Ok(BusinessCustomer.AddPolicy(customerPolicy));
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError();
+            }
+        }
+
         [Route("Delete")]
         [HttpPost]
         public IHttpActionResult Delete()

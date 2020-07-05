@@ -15,6 +15,9 @@ namespace Seguros.Business.Utils
             Type typeEntity = typeof(Entity);
             DynamicParameters parameters = new DynamicParameters();
 
+            if (prms == null)
+                return parameters;
+
             foreach (var Property in typeEntity.GetProperties())
             {
                 if (Property.GetValue(prms,null) != null)

@@ -8,15 +8,15 @@ namespace Seguros.Entities
 {
     public class InsurancePolicy
     {
-        public long IdInsurancePolicy { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public DateTime PolicyStart { get; set; }
-        public string Term { get; set; }
-        public decimal Price { get; set; }
-        public int IdRiskType { get; set; }
-        public string RiskName { get; set; }
-        public int IdCoverage { get; set; }
-        public string CoverageName { get; set; }
+        public long? IdInsurancePolicy { get; set; }
+        public string Name { get; set; } = null;
+        public string Description { get; set; } = null;
+        public DateTime? PolicyStart { get; set; }
+        public string Term { get; set; } = null;
+        public decimal? Price { get; set; }
+        public int? IdRisk { get; set; }
+        public string RiskName { get; set; } = null;
+        public int? IdCoverage { get; set; }
+        public string CoverageName { get; set; } = null;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Seguros.Business.Utils;
 using Seguros.DataAccess;
+using Seguros.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,20 @@ namespace Seguros.Business
         public BusinessCustomer()
         {
             repositoryCustomer = new Repository();
+        }
+
+        public bool AddPolicy<Entity>(Entity entity) where Entity : class
+        {
+            try
+            {
+                var prm = entity.GetParameters();
+
+                return repositoryCustomer.InsertEntity("SP_AddPolicyCustomer", prm);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public bool Create<Entity>(Entity entity) where Entity : class

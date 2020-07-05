@@ -1,21 +1,64 @@
 ﻿var CustomersEndPoint = "Customer/CustomerList";
-
+var customerList = [];
 $(document).ready(function () {
     $("#TbCustomer").DataTable();
     $(".dataTables_filter").hide();
     $(".dataTables_length").hide();
-    GetCustomers();
+    GetCustomers(function (customers) {
+        customerList = customers;
+        customers.map(customer => {
+            $("#TbCustomer").DataTable().clear().draw();
+            $("#TbCustomer").DataTable().rows.add(
+                [
+                    [
+                        customer.Identification,
+                        customer.Name,
+                        customer.Telephone,
+                        customer.Email,
+                        customer.Adress,
+                        "",
+                        GenerateColumsAddPolicy(customer.IdCustomer, customer.Name),
+                    ]
+                ]
+            ).draw();
+        });
+    });
 });
 
 
-function GetCustomers() {
+function GenerateColumsAddPolicy(IdCustomer) {
+    return "<div>"
+        + "<a href='javascript:' style='margin-right: 30px;' rel='nofollow' onclick='AddPolicy(" + IdCustomer + ")'>Add Policy</a>"
+        + "</div >";
+}
+
+function AddPolicy(IdCustomer) {
+
+    var customer = customerList.filter(customer => {
+        return customer.IdCustomer == IdCustomer;
+    });
+
+    RedirectoTo("/Home/PolicyCustomer?IdCustomer=" + IdCustomer + "&CustomerName=" + customer[0].Name);
+}
+
+function GetCustomers(FunctionCallBack) {
     Post({
         EndPoint: CustomersEndPoint,
         Success: function (data) {
-            console.log(data);
+            if (data) {
+                FunctionCallBack(data);
+            }
+            else {
+                FunctionCallBack([]);
+            }
         },
         error: function (error) {
+            FunctionCallBack([]);
             console.log(error);
         }
     });
+}
+
+function ViewPolicesCustomer(IdCustomer) {
+
 }
