@@ -13,39 +13,12 @@ namespace Seguros.DataAccess
     public class Repository : IRepository
     {
         public SqlConnection Context { get; set; }
-        public Repository()
+        public Repository(SqlConnection sqlConnection)
         {
-            Context = new SqlConnection(ConfigurationManager.ConnectionStrings["INSURANCE_CON"].ToString());
+            Context = sqlConnection; 
         }
 
-        public bool InsertEntity(string StoreProcedure, DynamicParameters prm)
-        {
-            using (IDbConnection db = Context)
-            {
-                db.Open();
-                return db.Execute(sql: StoreProcedure, param: prm, commandType: CommandType.StoredProcedure) > 0;
-            }
-        }
-
-        public bool DeleteEntity(string StoreProcedure, DynamicParameters prm)
-        {
-            using (IDbConnection db = Context)
-            {
-                db.Open();
-                return db.Execute(sql: StoreProcedure, param: prm, commandType: CommandType.StoredProcedure) > 0;
-            }
-        }
-
-        public bool UpdateEntity(string StoreProcedure, DynamicParameters prm)
-        {
-            using (IDbConnection db = Context)
-            {
-                db.Open();
-                return db.Execute(sql: StoreProcedure, param: prm, commandType: CommandType.StoredProcedure) > 0;
-            }
-        }
-
-        public List<Entity> GetEntities<Entity>(string StoreProcedure, DynamicParameters prm)
+        public List<Entity> ExecuteQuery<Entity>(string StoreProcedure, DynamicParameters prm = null)
         {
             using (IDbConnection db = Context)
             {
@@ -54,12 +27,12 @@ namespace Seguros.DataAccess
             }
         }
 
-        public IEnumerable<Entity> ExecuteQuery<Entity>(string StoreProcedure, DynamicParameters prm)
+        public bool ExecuteNonQuery(string StoreProcedure, DynamicParameters prm)
         {
             using (IDbConnection db = Context)
             {
                 db.Open();
-                return db.Query<Entity>(sql: StoreProcedure, param: prm, commandType: CommandType.StoredProcedure);
+                return db.Execute(sql: StoreProcedure, param: prm, commandType: CommandType.StoredProcedure) > 0;
             }
         }
     }

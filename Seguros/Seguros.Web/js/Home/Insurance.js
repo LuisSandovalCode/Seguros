@@ -26,6 +26,9 @@ $(document).ready(function () {
     });
 });
 
+function GoToCreateInsurance() {
+    RedirectoTo("/Home/CreateInsurance");
+}
 
 function GenerateColumsUpdateDelete(IdInsurancePolicy) {
     return "<div>"

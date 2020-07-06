@@ -3,18 +3,20 @@ using Seguros.DataAccess;
 using Seguros.Entities;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Seguros.Business
 {
-    public class BusinessCustomer : IBusiness
+    public class BusinessCustomer
     {
         Repository repositoryCustomer;
         public BusinessCustomer()
         {
-            repositoryCustomer = new Repository();
+            repositoryCustomer = new Repository(new SqlConnection(ConfigurationManager.ConnectionStrings["INSURANCE_CON"].ToString()));
         }
 
         public bool AddPolicy<Entity>(Entity entity) where Entity : class
@@ -23,7 +25,7 @@ namespace Seguros.Business
             {
                 var prm = entity.GetParameters();
 
-                return repositoryCustomer.InsertEntity("SP_AddPolicyCustomer", prm);
+                return repositoryCustomer.ExecuteNonQuery("SP_AddPolicyCustomer", prm);
             }
             catch (Exception ex)
             {
@@ -37,7 +39,7 @@ namespace Seguros.Business
             {
                 var prm = entity.GetParameters();
 
-                return repositoryCustomer.InsertEntity("SP_CreateCustomer", prm);
+                return repositoryCustomer.ExecuteNonQuery("SP_CreateCustomer", prm);
             }
             catch (Exception ex)
             {
@@ -51,7 +53,7 @@ namespace Seguros.Business
             {
                 var prm = entity.GetParameters();
 
-                return repositoryCustomer.InsertEntity("SP_DeleteCustomer", prm);
+                return repositoryCustomer.ExecuteNonQuery("SP_DeleteCustomer", prm);
             }
             catch (Exception ex)
             {
@@ -65,7 +67,7 @@ namespace Seguros.Business
             {
                 var prm = entity.GetParameters();
 
-                return repositoryCustomer.GetEntities<Entity>("SP_GetCustomer",prm);
+                return repositoryCustomer.ExecuteQuery<Entity>("SP_GetCustomer",prm);
             }
             catch (Exception ex)
             {
@@ -79,7 +81,7 @@ namespace Seguros.Business
             {
                 var prm = entity.GetParameters();
 
-                return repositoryCustomer.InsertEntity("SP_UpdateCustomer", prm);
+                return repositoryCustomer.ExecuteNonQuery("SP_UpdateCustomer", prm);
             }
             catch (Exception ex)
             {

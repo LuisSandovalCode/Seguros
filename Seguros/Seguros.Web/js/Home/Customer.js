@@ -34,7 +34,7 @@ function GenerateColumsAddPolicy(IdCustomer) {
 
 function GenerateColumsViewPolicies(IdCustomer) {
     return "<div>"
-        + "<a href='javascript:' style='margin-right: 30px;' rel='nofollow' onclick='ViewInsurances(" + IdCustomer + ")'>Add Policy</a>"
+        + "<a href='javascript:' style='margin-right: 30px;' rel='nofollow' onclick='ViewInsurances(" + IdCustomer + ")'>View Policies</a>"
         + "</div >";
 }
 

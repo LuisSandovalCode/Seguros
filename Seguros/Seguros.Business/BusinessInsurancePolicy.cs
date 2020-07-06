@@ -4,6 +4,8 @@ using Seguros.DataAccess;
 using Seguros.Entities;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
@@ -11,13 +13,13 @@ using System.Threading.Tasks;
 
 namespace Seguros.Business
 {
-    public class BusinessInsurancePolicy : IBusiness
+    public class BusinessInsurancePolicy
     {
         Repository repositoryInsurance;
 
         public BusinessInsurancePolicy()
         {
-            repositoryInsurance = new Repository();
+            repositoryInsurance = new Repository(new SqlConnection(ConfigurationManager.ConnectionStrings["INSURANCE_CON"].ToString()));
         }
 
         public bool Create<Entity>(Entity entity) where Entity : class
@@ -25,7 +27,7 @@ namespace Seguros.Business
             try
             {
                 DynamicParameters parms = entity.GetParameters();
-                return repositoryInsurance.InsertEntity("SP_CreateInsurance", parms);
+                return repositoryInsurance.ExecuteNonQuery("SP_CreateInsurance", parms);
 
             }
             catch (Exception ex)
@@ -39,7 +41,7 @@ namespace Seguros.Business
             try
             {
                 DynamicParameters parms = entity.GetParameters();
-                return repositoryInsurance.InsertEntity("SP_DeleteInsurance", parms);
+                return repositoryInsurance.ExecuteNonQuery("SP_DeleteInsurance", parms);
             }
             catch (Exception ex)
             {
@@ -52,7 +54,7 @@ namespace Seguros.Business
         {
             try
             {
-                return repositoryInsurance.GetEntities<RiskType>("SP_GetRiks", null);
+                return repositoryInsurance.ExecuteQuery<RiskType>("SP_GetRiks");
             }
             catch (Exception ex)
             {
@@ -64,7 +66,7 @@ namespace Seguros.Business
         {
             try
             {
-                return repositoryInsurance.GetEntities<CoverageType>("SP_GetCoverage", null);
+                return repositoryInsurance.ExecuteQuery<CoverageType>("SP_GetCoverage");
             }
             catch (Exception ex)
             {
@@ -72,12 +74,12 @@ namespace Seguros.Business
             }
         }
 
-        public List<Entity> GetEntities<Entity>(Entity entity)
+        public List<InsurancePolicy> GetInsurances(InsurancePolicy entity)
         {
             try
             {
                 DynamicParameters parms = entity.GetParameters();
-                return repositoryInsurance.GetEntities<Entity>("SP_GetInsurances", parms);
+                return repositoryInsurance.ExecuteQuery<InsurancePolicy>("SP_GetInsurances", parms);
 
             }
             catch (Exception ex)
@@ -91,7 +93,7 @@ namespace Seguros.Business
             try
             {
                 DynamicParameters parms = entity.GetParameters();
-                return repositoryInsurance.InsertEntity("SP_UpdateInsurance", parms);
+                return repositoryInsurance.ExecuteNonQuery("SP_UpdateInsurance", parms);
             }
             catch (Exception ex)
             {
@@ -99,9 +101,5 @@ namespace Seguros.Business
             }
         }
 
-        public bool AddPolicy<Entity>(Entity entity) where Entity : class
-        {
-            throw new NotImplementedException();
-        }
     }
 }

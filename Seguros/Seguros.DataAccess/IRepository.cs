@@ -12,11 +12,8 @@ namespace Seguros.DataAccess
     {
         SqlConnection Context { get; set; }
 
-        IEnumerable<Entity> ExecuteQuery<Entity>(string StoreProcedure, DynamicParameters prm);
-        bool InsertEntity(string StoreProcedure,DynamicParameters prm);
-        bool DeleteEntity(string StoreProcedure, DynamicParameters prm);
-        bool UpdateEntity(string StoreProcedure, DynamicParameters prm);
-        List<Entity> GetEntities<Entity>(string StoreProcedure, DynamicParameters prm);
+        List<Entity> ExecuteQuery<Entity>(string StoreProcedure, DynamicParameters prm);
 
+        bool ExecuteNonQuery(string StoreProcedure, DynamicParameters prm);
     }
 }

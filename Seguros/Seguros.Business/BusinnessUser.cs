@@ -3,6 +3,8 @@ using Seguros.DataAccess;
 using Seguros.Entities;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +16,7 @@ namespace Seguros.Business
         Repository repositoryUser;
         public BusinnessUser()
         {
-            repositoryUser = new Repository();
+            repositoryUser = new Repository(new SqlConnection(ConfigurationManager.ConnectionStrings["INSURANCE_CON"].ToString()));
         }
 
         public bool AutenticateUser(User user)

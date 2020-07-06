@@ -98,8 +98,10 @@ function DoActionInsurance(IsUpdate) {
         EndPoint: EndPointToDO,
         data: GetInsuranceData(),
         Success: function (data) {
+            console.log(data);
             if (data) {
                 !IsUpdate ? alert("The Insurance was created successfully") : alert("The Insurance was updated successfully");
+                history.back();
             }
         },
         Error: function (error) {

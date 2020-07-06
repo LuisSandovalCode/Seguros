@@ -84,7 +84,7 @@ namespace Seguros.Api.Controllers
 
                 var insurance = RequestBody.DeserealizeJson<InsurancePolicy>();
 
-                return Ok(insurancePolicy.GetEntities(insurance));
+                return Ok(insurancePolicy.GetInsurances(insurance));
             }
             catch (Exception ex)
             {
